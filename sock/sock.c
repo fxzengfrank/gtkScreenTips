@@ -98,10 +98,8 @@ gpointer test (gpointer data)
 
 int main (int argc, char **argv)
 {
-    /*
     GThread *thread;
     thread = g_thread_new ("socket thread", test, NULL);
-     */
 
     gtk_init (&argc, &argv);
     GtkWidget *window = NULL;
@@ -122,6 +120,6 @@ int main (int argc, char **argv)
     gtk_main ();
 
     gtk_main_quit();
-    //g_thread_join (thread);
+    g_thread_join (thread);
 }
 
