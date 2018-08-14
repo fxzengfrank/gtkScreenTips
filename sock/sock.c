@@ -115,6 +115,16 @@ int main (int argc, char **argv)
     gtk_container_add (GTK_CONTAINER(window), label);
     gtk_label_set_text (GTK_LABEL(label), "some text");
 
+    const gchar *cssdata = "label {\n"
+        "color: red;\n"
+        "}\n";
+    GtkCssProvider *provider = NULL;
+    provider = gtk_css_provider_new ();
+    gtk_css_provider_load_from_data (provider, cssdata, -1, NULL);
+    GtkStyleContext *context = NULL;
+    context = gtk_widget_get_style_context (label);
+    gtk_style_context_add_provider (context, GTK_STYLE_PROVIDER(provider), GTK_STYLE_PROVIDER_PRIORITY_USER);
+
     gtk_widget_show (label);
     gtk_widget_show (window);
     gtk_main ();
