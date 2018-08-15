@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <glib.h>
 #include <gio/gio.h>
 #include <gmodule.h>
@@ -36,7 +39,7 @@ gpointer test (gpointer data)
     g_printf("socket fd is %d\n", socketfd);
 
     GSocketAddress *sockaddr = NULL;
-    sockaddr = g_inet_socket_address_new_from_string ("127.0.0.1", 7777);
+    sockaddr = g_inet_socket_address_new_from_string ("127.0.0.1", 7000);
     if (sockaddr != NULL) {
         g_printf ("parse socket address success.\n");
     } else {
@@ -130,18 +133,17 @@ int main (int argc, char **argv)
     //gtk_widget_set_size_request (window, 200, 50);
     gtk_window_set_keep_above (GTK_WINDOW(window), TRUE);
     gtk_window_set_decorated (GTK_WINDOW(window), FALSE);
-    gtk_window_move (GTK_WINDOW(window), 200, 200);
+    gtk_window_move (GTK_WINDOW(window), 0, 460);
 
     label = gtk_label_new (NULL);
     gtk_container_add (GTK_CONTAINER(window), label);
-    gtk_label_set_text (GTK_LABEL(label), "some text");
 
     const gchar *cssdata = "label {\n"
-        "min-width: 1000px;\n"
+        "min-width: 800px;\n"
         "opacity: 1;\n"
-        "color: red;\n"
+        "color: gray;\n"
         "background-color: black;\n"
-        "font-size: 20px;\n"
+        "font-size: 18px;\n"
         "}\n"
         "window {\n"
         "opacity: 0;\n"
